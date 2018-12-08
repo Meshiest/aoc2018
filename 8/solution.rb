@@ -5,11 +5,10 @@ input = open('input.txt')
 
 # Build the tree using the input as a queue
 def get_node input
-  nodes = input.shift
-  metas = input.shift
+  nodes, metas = input.shift 2
   {
     nodes: nodes.times.map{get_node input}, # Read child nodes before getting meta
-    meta: metas.times.map{input.shift}, # Meta comes after child nodes
+    meta: input.shift(metas), # Meta comes after child nodes
   }
 end
 
