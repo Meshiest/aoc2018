@@ -13,10 +13,10 @@ grid = Array::new(300){[0] * 300}
 end
 
 def find grid, size
-  (1..299).map{ |x|
-    (1..299).map{ |y|
+  (0..300 - size + 1).map{ |x|
+    (0..300 - size + 1).map{ |y|
       # Get the sum of the area
-      [grid[y-1, size].sum{ |row| row[x-1, size].sum }, [x-1, y-1]]
+      [grid[y, size].sum{ |row| row[x, size].sum }, [x, y]]
     }
   }.reduce(&:+).sort.last # Find the largest
 end
